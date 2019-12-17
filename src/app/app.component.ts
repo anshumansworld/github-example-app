@@ -14,6 +14,11 @@ export class AppComponent {
 
   constructor(private gitHubService: GitHubService) {}
 
+  /**
+   * @method getRepoCommit
+   * @description Call GitHub service to get user's repository commit list.
+   * @return {void}
+   */
   getRepoCommit() {
     this.showSpinner = true;
     this.gitHubService.getRepoCommit(this.username, this.repo).subscribe(
@@ -23,7 +28,7 @@ export class AppComponent {
       },
       err => {
         this.showSpinner = false;
-        this.commitList = []
+        this.commitList = [];
       }
     );
   }

@@ -13,16 +13,31 @@
     <form>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <input type="text"  [(ngModel)]="username" name="username" class="form-control" placeholder="User name">
+          <input
+            type="text"
+            [(ngModel)]="username"
+            name="username"
+            class="form-control"
+            placeholder="User name"
+          />
         </div>
         <div class="form-group col-md-6">
-          <input type="text"  [(ngModel)]="repo" name="repo" class="form-control" placeholder="Repository name">
+          <input
+            type="text"
+            [(ngModel)]="repo"
+            name="repo"
+            class="form-control"
+            placeholder="Repository name"
+          />
         </div>
-
       </div>
       <div class="form-row">
-        <a class="btn btn-primary btn-lg" (click)="getRepoCommit()" role="button"
-        >Show commit</a>
+        <a
+          class="btn btn-primary btn-lg"
+          (click)="getRepoCommit()"
+          role="button"
+          >Show commit</a
+        >
         <div class="spinner" *ngIf="showSpinner">
           <div class="spinner-border text-primary" role="status">
             <span class="sr-only">Loading...</span>
@@ -30,15 +45,24 @@
         </div>
       </div>
     </form>
-
   </div>
 
   <ul class="list-unstyled">
     <li class="media" *ngFor="let commit of commitList; index as i">
-      <img [src]="commit.author ? commit.author.avatar_url : '../assets/default.png'"  width="64px" class="avatar mr-3" alt="...">
+      <img
+        [src]="
+          commit.author ? commit.author.avatar_url : '../assets/default.png'
+        "
+        width="64px"
+        class="avatar mr-3"
+      />
       <div class="media-body">
-        <h5 class="mt-0 mb-1">{{commit.commit.message | slice:0:80}} {{commit.commit.message.length > 80 ? '...' : ''}}</h5>
-        {{commit.committer.login}} committed on {{commit.commit.committer.date | date}}
+        <h5 class="mt-0 mb-1">
+          {{ commit.commit.message | slice: 0:80 }}
+          {{ commit.commit.message.length > 80 ? "..." : "" }}
+        </h5>
+        {{ commit.committer.login }} committed on
+        {{ commit.commit.committer.date | date }}
       </div>
     </li>
     <li class="media" *ngIf="!commitList.length">
